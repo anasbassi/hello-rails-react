@@ -2,6 +2,7 @@ const path    = require("path")
 const webpack = require("webpack")
 
 module.exports = {
+  watch: true,
   mode: "production",
   devtool: "source-map",
   entry: {
@@ -20,6 +21,11 @@ module.exports = {
     filename: "[name].js",
     sourceMapFilename: "[file].map",
     path: path.resolve(__dirname, "app/assets/builds"),
+  },
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000
   },
   plugins: [
     new webpack.optimize.LimitChunkCountPlugin({
